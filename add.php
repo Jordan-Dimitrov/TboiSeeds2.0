@@ -82,7 +82,7 @@ require 'mysql.php';
 session_start();
 $idd =  $_SESSION['id'];
 if (isset($_POST['seed'])&&isset($_POST['character'])&&strlen($_POST['seed'])==8&&strlen($_POST['character'])!=0){
-    $seed = $_POST['seed']." ";
+    $seed = $_POST['seed'];
     $character = $_POST['character']." ";
     $found = false;
     $pdoQuery = "SELECT * FROM seeds";

@@ -51,7 +51,7 @@ if (isset($_POST['name'])&&isset($_POST['pass'])&&strlen($_POST['name'])!=0&&str
         $_SESSION['id'] = $id;
         header("Location: main.html");
     }else{
-        echo '<script>alert("Error")</script>';
+        echo '<script>alert("Invalid username or password")</script>';
     }
 }else{
 

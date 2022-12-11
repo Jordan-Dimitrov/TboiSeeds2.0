@@ -64,6 +64,8 @@ if (isset($_POST['name'])&&isset($_POST['pass'])&&strlen($_POST['name'])>=6&&str
         } else {
             echo '<script>alert("Error")</script>';
         }
+    }else{
+        echo '<script>alert("Username already exists")</script>';
     }
 }else{
 
