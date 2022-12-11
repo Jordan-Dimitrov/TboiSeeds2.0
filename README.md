@@ -4,3 +4,6 @@
 <h1>What you need</h1>
 <p>MySQL database with table users:</p>
 <img src="https://github.com/Jordan-Dimitrov/TboiSeeds2.0/blob/master/images/users.png">
+
+<p>MySQL database with table seeds:</p>
+<img src="https://github.com/Jordan-Dimitrov/TboiSeeds2.0/blob/master/images/seeds.png">
