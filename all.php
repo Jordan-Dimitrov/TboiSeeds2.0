@@ -35,6 +35,7 @@ $users = $statement->fetchAll(PDO::FETCH_OBJ);
             <th>Character</th>
             <th>Seed</th>
             <th>User</th>
+            <th>Description</th>
         </tr>
         <?php foreach ($users as $user): ?>
             <tr>
@@ -45,6 +46,7 @@ $users = $statement->fetchAll(PDO::FETCH_OBJ);
                     $statement->execute([$user->users_idUsers]);
                     $name = $statement->fetch(PDO::FETCH_OBJ); ?></td>
                 <td><?= $name->username; ?></td>
+                <td><?= $user->description; ?></td>
             </tr>
         <?php endforeach; ?>
     </table>

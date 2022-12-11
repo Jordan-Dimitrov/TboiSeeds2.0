@@ -31,11 +31,13 @@ $users = $statement->fetchAll(PDO::FETCH_OBJ);
     <tr>
         <th>Character</th>
         <th>Seed</th>
+        <th>Description</th>
     </tr>
     <?php foreach ($users as $user): ?>
         <tr>
             <td><img width="50%" src="<?= "images/".trim(strtolower($user->character)).".png";?>"></td>
             <td><?= $user->seed; ?></td>
+            <td><?= $user->description; ?></td>
         </tr>
     <?php endforeach; ?>
 </table>

@@ -43,3 +43,6 @@ button {
     transition-duration: 0.4s;
     cursor: pointer;
 }
+textarea {
+    resize: none;
+}

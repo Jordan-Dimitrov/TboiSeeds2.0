@@ -10,12 +10,18 @@
 <div class="text-center">
     <h1> <a href="main.html">The Binding of Isaac Seeds</a></h1>
     <p>Here you can add seeds</p>
+    <p>Description should be less than 50 characters</p>
 </div>
 <form method="post" action="add.php">
     <div class="text-center">
         <label for="seed">Seed:</label>
         <br>
         <input type="text" name="seed" id="seed" placeholder="BASEMENT" required size="12%">
+        <br>
+        <br>
+        <label for="description">Description:</label>
+        <br>
+        <textarea name="description" id="description" placeholder="Very good seed" required rows="2" cols="25" maxlength="50"></textarea>
         <br>
         <br>
         <label for="character">Character:</label>
@@ -28,7 +34,7 @@
             <option value="Judas">Judas</option>
             <option value="Blue_Baby">Blue Baby</option>
             <option value="Eve">Eve</option>
-            <option value="Samson">Azazel</option>
+            <option value="Samson">Samson</option>
             <option value="Azazel">Azazel</option>
             <option value="Lazarus">Lazarus</option>
             <option value="Eden">Eden</option>
@@ -81,9 +87,10 @@ require 'mysql2.php';
 require 'mysql.php';
 session_start();
 $idd =  $_SESSION['id'];
-if (isset($_POST['seed'])&&isset($_POST['character'])&&strlen($_POST['seed'])==8&&strlen($_POST['character'])!=0){
+if (isset($_POST['seed'])&&isset($_POST['character'])&&strlen($_POST['seed'])==8&&strlen($_POST['character'])!=0&&isset($_POST['description'])){
     $seed = strtoupper($_POST['seed']);
     $character = $_POST['character']." ";
+    $description = $_POST['description'];
     $found = false;
     $pdoQuery = "SELECT * FROM seeds";
     $statement = $conn->prepare($pdoQuery);
@@ -98,7 +105,7 @@ if (isset($_POST['seed'])&&isset($_POST['character'])&&strlen($_POST['seed'])==8
         }
     }
     if ($found==false){
-        $sql = "INSERT INTO `seeds`(`seed`, `character`, `users_idUsers`) VALUES ('$seed', '$character', '$idd')";
+        $sql = "INSERT INTO `seeds`(`seed`, `character`, `users_idUsers`, `description`) VALUES ('$seed', '$character', '$idd', '$description')";
 
         if(mysqli_query($connect, $sql))
         {
