@@ -1,0 +1,45 @@
+body {
+    color: white;
+}
+
+body {
+    background-image: url('https://steamcdn-a.akamaihd.net/steamcommunity/public/images/items/250900/4897a7ee61404539a8b96907b87793b52acf2ca5.png');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+.text-center {
+    text-align: center;
+}
+.center {
+    margin-left: auto;
+    margin-right: auto;
+}
+table, th, td {
+    border: 1px solid gray;
+    border-collapse: collapse;
+    background-color: black;
+    color: white
+}
+input, button,p, label, select{
+    font-size: 150%;
+}
+tr,th,table{
+    font-size: 130%;
+}
+td {
+    padding: 0 15px;
+}
+button {
+    background-color: white; /* Green */
+    border: none;
+    color: black;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
