@@ -5,14 +5,9 @@
 
 <ol>
   <li><p>MySQL database with table users:</p></li>
-  <li>Tea</li>
-  <li>Milk</li>
+  <img src="https://github.com/Jordan-Dimitrov/TboiSeeds2.0/blob/master/images/users.png">
+  <li><p>MySQL database with table seeds:</p></li>
+  <img src="https://github.com/Jordan-Dimitrov/TboiSeeds2.0/blob/master/images/seeds.png">
+  <li><p>Php installed</p></li>
 </ol>
 
-<p>MySQL database with table users:</p>
-<img src="https://github.com/Jordan-Dimitrov/TboiSeeds2.0/blob/master/images/users.png">
-
-<p>MySQL database with table seeds:</p>
-<img src="https://github.com/Jordan-Dimitrov/TboiSeeds2.0/blob/master/images/seeds.png">
-
-<p>Php installed</p>
