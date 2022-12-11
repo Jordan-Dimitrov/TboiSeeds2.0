@@ -1,4 +1,5 @@
 # TboiSeeds2.0
-Improved version of TboiSeeds with php and MySQL. Added login system, better ui and a working random system.
+<p>Improved version of TboiSeeds with php and MySQL instead of javascript and firebase. Added login system, better ui and a working random system.</p>
 
-You will need a table users with column idUsers, column username and column password. You will also need a table seeds with column idseeds, column seed and column character.
+<h1>What you need</h1>
+<p>MySQL database with table users: <img src="https://github.com/Jordan-Dimitrov/TboiSeeds2.0/images/users.png"></p>
