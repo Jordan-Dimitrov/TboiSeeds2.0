@@ -1,20 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Login</title>
-    <link rel="icon" type="image/x-icon" href="/images/tboi.ico">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="/images/tboi.ico">
+    <style>
+        table, th, td {
+            border: 1px solid white;
+            border-collapse: collapse;
+        }
+    </style>
 </head>
 <body>
 <div class="text-center">
-    <h1>The Binding of Isaac Seeds</h1>
-    <form method="post" action="login.php">
+    <br>
+    <h2>Login in existing account</h2>
+    <form method="post" action="user.php">
         <br>
-        <input type="text" name="name" placeholder="Nai-golemiqt" required>
+        <input type="text" name="username" placeholder="Nai-golemiqt" required>
         <br>
         <br>
-        <input type="password" name="pass" placeholder="********" required>
+        <input type="password" name="password" placeholder="********" required>
         <br>
         <br>
         <button type="submit">submit</button>
@@ -25,35 +34,3 @@
 </div>
 </body>
 </html>
-
-<?php
-require 'mysql.php';
-if (isset($_POST['name'])&&isset($_POST['pass'])&&strlen($_POST['name'])!=0&&strlen($_POST['pass'])!=0){
-    $name = $_POST['name'];
-    $pass = $_POST['pass'];
-    $found = false;
-    $pdoQuery = "SELECT * FROM users";
-    $statement = $conn->prepare($pdoQuery);
-    $statement->execute();
-    $users = $statement->fetchAll(PDO::FETCH_OBJ);
-    $id = 0;
-    foreach ($users as $user){
-        if ($user->username==$name){
-            if ($user->password==$pass){
-                $found = true;
-                $id = $user->idUsers;
-            }
-        }
-    }
-    if ($found==true){
-        session_start();
-        $_SESSION['name'] = $name;
-        $_SESSION['id'] = $id;
-        header("Location: main.html");
-    }else{
-        echo '<script>alert("Invalid username or password")</script>';
-    }
-}else{
-
-}
-?>

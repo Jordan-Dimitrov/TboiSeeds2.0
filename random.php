@@ -1,39 +1,26 @@
 <?php
-require 'mysql.php';
+require 'navigation.php';
+require 'user.php';
 session_start();
-$pdoQuery = "SELECT * FROM seeds";
-$statement = $conn->prepare($pdoQuery);
-$idd =  $_SESSION['id'];
-$statement->execute();
-$users = $statement->fetchAll(PDO::FETCH_OBJ);
-$num = $statement->rowCount();
+error_reporting(0);
+$users = new user();
+$seeds = $users->AllSeeds();
+$num = $users->CountSeeds();
 $seed = rand(1,$num);
-$sql = 'SELECT * FROM seeds where idseeds = ?';
-$stmt = $conn->prepare($sql);
-$stmt->execute([$seed]);
-$sed = $stmt->fetch(PDO::FETCH_OBJ);
-$src = "images/".trim(strtolower($sed->character)).".png";
+$sed = $users->ReadDetails($seed);
+$src = "images/".trim(strtolower($sed->characterr)).".png";
 ?>
-
-
 <!DOCTYPE html>
 <html>
 <head>
-    <style>
-        table, th, td {
-            border: 1px solid black;
-        }
-    </style>
     <meta charset="UTF-8">
     <title>All seeds</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/x-icon" href="/images/tboi.ico">
 </head>
 <body>
 <div class="text-center">
-    <h1> <a href="main.html">The Binding of Isaac Seeds</a></h1>
+    <br>
+    <h2>Random seed</h2>
     <p><?= $sed->seed; ?></p>
-    <p><?= $sed->character; ?></p>
     <img width="5%" src=<?= $src; ?>>
 </div>
 </body>

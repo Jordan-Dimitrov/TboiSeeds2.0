@@ -1,44 +1,35 @@
 <?php
-require 'mysql.php';
+require 'user.php';
+require 'navigation.php';
+error_reporting(0);
 session_start();
-$pdoQuery = "SELECT * FROM seeds WHERE users_idUsers = ?";
-$statement = $conn->prepare($pdoQuery);
+$user = new user();
 $idd =  $_SESSION['id'];
-$statement->execute([$idd]);
-$users = $statement->fetchAll(PDO::FETCH_OBJ);
+$users = $user->ReadMySeeds($idd);
 ?>
-
-
-
 <!DOCTYPE html>
 <html>
 <head>
-    <style>
-        table, th, td {
-            border: 1px solid black;
-        }
-    </style>
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/x-icon" href="/images/tboi.ico">
     <meta charset="UTF-8">
     <title>My Seeds</title>
 </head>
 <body>
-<div class="text-center">
-    <h1> <a href="main.html">The Binding of Isaac Seeds</a></h1>
-</div>
+<br>
+<h2 class="text-center">Here you can see all of your seeds</h2>
+<br>
 <table class="center">
     <tr>
         <th>Character</th>
         <th>Seed</th>
         <th>Description</th>
     </tr>
-    <?php foreach ($users as $user): ?>
-        <tr>
-            <td><img width="50%" src="<?= "images/".trim(strtolower($user->character)).".png";?>"></td>
-            <td><?= $user->seed; ?></td>
-            <td><?= $user->description; ?></td>
-        </tr>
+    <?php
+      foreach ($users as $user): ?>
+    <tr>
+        <td><img width="50%" src="<?= "images/".trim(strtolower($user->characterr)).".png";?>"></td>
+        <td><?= $user->seed; ?></td>
+        <td><?= $user->description; ?></td>
+    </tr>
     <?php endforeach; ?>
 </table>
 </body>

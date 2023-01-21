@@ -1,18 +1,18 @@
-<!DOCTYPE html>
+<?php
+require "navigation.php";
+?><!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Add Seed</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/x-icon" href="/images/tboi.ico">
 </head>
 <body>
 <div class="text-center">
-    <h1> <a href="main.html">The Binding of Isaac Seeds</a></h1>
-    <p>Here you can add seeds</p>
-    <p>Description should be less than 50 characters</p>
+    <br>
+    <h2>Here you can add seeds</h2>
+    <br>
 </div>
-<form method="post" action="add.php">
+<form method="post" action="user.php" id="theForm">
     <div class="text-center">
         <label for="seed">Seed:</label>
         <br>
@@ -41,7 +41,7 @@
             <option value="The_Lost">The Lost</option>
             <option value="Lilith">Lilith</option>
             <option value="Keeper">Keeper</option>
-            <option value="Appolyon">Appolyon</option>
+            <option value="Apollyon">Apollyon</option>
             <option value="The_Forgotten">The Forgotten</option>
             <option value="Bethany">Bethany</option>
             <option value="Jacob_And_Esau">Jacob and Esau</option>
@@ -70,56 +70,14 @@ function Validate(){
         alert("Invalid seed!");
         return;
     }
-
-
     if (seed.length != 8) {
         alert("Invalid seed!");
         return;
     } else {
         alert("Valid seed!");
+        document.getElementById('theForm').submit();
         return;
     }
 }
 </script>
 </html>
-<?php
-require 'mysql2.php';
-require 'mysql.php';
-session_start();
-$idd =  $_SESSION['id'];
-if (isset($_POST['seed'])&&isset($_POST['character'])&&strlen($_POST['seed'])==8&&strlen($_POST['character'])!=0&&isset($_POST['description'])){
-    $seed = strtoupper($_POST['seed']);
-    $character = $_POST['character']." ";
-    $description = $_POST['description'];
-    $found = false;
-    $pdoQuery = "SELECT * FROM seeds";
-    $statement = $conn->prepare($pdoQuery);
-    $statement->execute();
-    $users = $statement->fetchAll(PDO::FETCH_OBJ);
-    if (isset($_POST['tainted'])){
-        $character = "Tainted_". $character;
-    }
-    foreach ($users as $user){
-        if ($user->seed==$seed){
-            $found = true;
-        }
-    }
-    if ($found==false){
-        $sql = "INSERT INTO `seeds`(`seed`, `character`, `users_idUsers`, `description`) VALUES ('$seed', '$character', '$idd', '$description')";
-
-        if(mysqli_query($connect, $sql))
-        {
-            // block of code, to process further
-        }
-        else
-        {
-            echo '<script>alert("Error")</script>';
-        }
-    }
-    else{
-        echo '<script>alert("Seed already exists")</script>';
-    }
-}else{
-
-}
-?>
