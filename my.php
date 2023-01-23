@@ -17,7 +17,7 @@ $users = $user->ReadMySeeds($idd);
 <br>
 <h2 class="text-center">Here you can see all of your seeds</h2>
 <br>
-<table class="center">
+<table class="center" id="seeds">
     <tr>
         <th>Character</th>
         <th>Seed</th>
@@ -27,11 +27,10 @@ $users = $user->ReadMySeeds($idd);
       foreach ($users as $user): ?>
     <tr>
         <td><img width="50%" src="<?= "images/".trim(strtolower($user->characterr)).".png";?>"></td>
-        <td><?= $user->seed; ?></td>
-        <td><?= $user->description; ?></td>
+        <td><?= filter_var($user->seed, FILTER_SANITIZE_STRING); ?></td>
+        <td><?= filter_var($user->description, FILTER_SANITIZE_STRING);?></td>
     </tr>
     <?php endforeach; ?>
 </table>
 </body>
 </html>
-

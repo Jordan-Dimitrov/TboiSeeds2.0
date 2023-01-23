@@ -29,9 +29,9 @@ $newU = new user();
         <?php foreach ($users as $user): ?>
             <tr>
                 <td><img width="50%" src="<?= "images/".trim(strtolower($user->characterr)).".png";?>"></td>
-                <td><?= $user->seed; ?></td>
-                <td><?=$newU->ReadUser($user->users_idUsers)->username;?></td>
-                <td><?= $user->description; ?></td>
+                <td><?= filter_var($user->seed, FILTER_SANITIZE_STRING); ?></td>
+                <td><?=filter_var($newU->ReadUser($user->users_idUsers)->username, FILTER_SANITIZE_STRING);?></td>
+                <td><?= filter_var($user->description, FILTER_SANITIZE_STRING); ?></td>
             </tr>
         <?php endforeach; ?>
     </table>
